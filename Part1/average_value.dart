@@ -19,11 +19,12 @@ double calcAverage(){
     arr.add(element);
     sum += element;
   }
-
+  
   double average = sum / num;
   print('Average: $average');
 }
 
 void main(){
+  // main function.
   calcAverage();
 }

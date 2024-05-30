@@ -1,43 +1,62 @@
+import 'dart:io';
 
-// Sum between numbers
-int sumation(int num1, int num2){
-  int sum = num1 + num2;
-  print('Sum: $sum');
-  return sum;
+// Function to perform addition
+double add(double a, double b) {
+  return a + b;
 }
 
-// subtract
-int subtract(int num1, int num2){
-  int sub = num1 - num2;
-  print('Sub: $sub');
-  return sub;
+// Function to perform subtraction
+double subtract(double a, double b) {
+  return a - b;
 }
 
-// multiply
-double multiply(double num1, num2){
-  double multi = num1 * num2;
-  print('Multi: $multi');
-  return multi;
+// Function to perform multiplication
+double multiply(double a, double b) {
+  return a * b;
 }
 
-// Divided
-double divided(double num1, double num2){
-  double div = num1 / num2;
-  if(num2 == 0){ // Check condition.
-    print("can't divided by zero");
-  }
-  else if(num2 < 0){
-    print("can't divided by negative");
+// Function to perform division
+double divide(double a, double b) {
+  if(b == 0){
+    print('Error: division by zero');
+    return double.nan; //  Return NaN (Not a Number) if division by zero.
   }
   else{
-    print('Div: $div');
-    return div;
+    return a / b;
   }
 }
 
-void main(){
-  sumation(3, 2);
-  subtract(10, 5);
-  multiply(10, 5);
-  divided(15, 3);
+// Main function to run the calculator
+void main() {
+  print('Simple Dart Calculator');
+  print('Enter the first number:');
+  double num1 = double.parse(stdin.readLineSync());
+
+  print('Enter the second number:');
+  double num2 = double.parse(stdin.readLineSync());
+
+  print('Enter an operator (+, -, *, /):');
+  String operator = stdin.readLineSync();
+
+  double result;
+
+  switch (operator) {
+    case '+':
+      result = add(num1, num2);
+      break;
+    case '-':
+      result = subtract(num1, num2);
+      break;
+    case '*':
+      result = multiply(num1, num2);
+      break;
+    case '/':
+      result = divide(num1, num2);
+      break;
+    default:
+      print('Error: Invalid operator');
+      return;
+  }
+
+  print('The result is: $result');
 }
